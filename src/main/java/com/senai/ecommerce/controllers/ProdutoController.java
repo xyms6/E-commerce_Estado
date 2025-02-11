@@ -19,21 +19,23 @@ import com.senai.ecommerce.services.ProdutoService;
 @RequestMapping(value = "/produto")
 public class ProdutoController {
 
-	@Autowired 
-	ProdutoService service;
-	
-	
-	@GetMapping
-	public ResponseEntity<List<ProdutoDTO>> buscar(){
-		return ResponseEntity.ok(service.buscarTodos());
-	}
-	@GetMapping(value = "pagina")
-	public ResponseEntity<Page<ProdutoDTO>> buscarPagina(Pageable pagina){
-		return ResponseEntity.ok(service.buscarPagina(pagina));
-	}
-	@PostMapping
-	public ResponseEntity<ProdutoDTO> criar(@RequestBody ProdutoDTO produtoDTO){
-		ProdutoDTO novoProduto = service.criar(produtoDTO); // Chama o serviço para salvar o novo produto
-		return ResponseEntity.status(201).body(novoProduto); // Retorna o produto criado com status 201 (Created)
-	}
+    @Autowired 
+    private ProdutoService service;
+
+    @GetMapping
+    public ResponseEntity<List<ProdutoDTO>> buscar() {
+        return ResponseEntity.ok(service.buscarTodos());
+    }
+
+    @GetMapping(value = "/pagina")
+    public ResponseEntity<Page<ProdutoDTO>> buscarPagina(Pageable pagina) {
+        return ResponseEntity.ok(service.buscarPagina(pagina));
+    }
+
+    @PostMapping
+    public ResponseEntity<ProdutoDTO> criar(@RequestBody ProdutoDTO produtoDTO) {
+        ProdutoDTO novoProduto = service.criar(produtoDTO);
+        return ResponseEntity.ok(novoProduto);
+    }
+
 }

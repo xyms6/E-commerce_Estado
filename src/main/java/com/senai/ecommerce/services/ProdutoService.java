@@ -14,20 +14,24 @@ import com.senai.ecommerce.repositories.ProdutoRepository;
 @Service
 public class ProdutoService {
 
-	@Autowired 
-	ProdutoRepository repo;
-	
-	public List<ProdutoDTO> buscarTodos() {
-	List<Produto> list = repo.findAll();
-		return list.stream().map(x -> new ProdutoDTO(x)).toList() ; 
-	}
-	
-	public Page<ProdutoDTO> buscarPagina(Pageable pagina){
-		Page<Produto> result = repo.findAll(pagina);
-		return result.map(x -> new ProdutoDTO(x));
-	}
-	public ProdutoDTO criar(ProdutoDTO ProdutoDTO) {
-        Produto produto = new Produto(ProdutoDTO);
+    @Autowired 
+    private ProdutoRepository repo;
+    
+    public List<ProdutoDTO> buscarTodos() {
+        List<Produto> list = repo.findAll();
+        return list.stream().map(ProdutoDTO::new).toList(); 
+    }
+    
+    public Page<ProdutoDTO> buscarPagina(Pageable pagina) {
+        Page<Produto> result = repo.findAll(pagina);
+        return result.map(ProdutoDTO::new);
+    }
+    
+    public ProdutoDTO criar(ProdutoDTO produtoDTO) {
+        Produto produto = new Produto(produtoDTO);
+        if (produto.getPreco() == null) {
+            produto.setPreco(0.0);
+        }
         produto = repo.save(produto); 
         return new ProdutoDTO(produto); 
     }
