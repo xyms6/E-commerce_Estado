@@ -7,7 +7,7 @@ public class ProdutoDTO {
     private Long id;
     private String nome;
     private String descricao;
-    private Double preco;  
+    private Double preco;
     private String imgUrl;
 
     public ProdutoDTO() {
@@ -22,11 +22,11 @@ public class ProdutoDTO {
     }
 
     public ProdutoDTO(Produto p) {
-        this.id = p.getId();
-        this.nome = p.getNome();
-        this.descricao = p.getDescricao();
-        this.preco = p.getPreco();  
-        this.imgUrl = p.getImgUrl();
+        id = p.getId();
+        nome = p.getNome();
+        descricao = p.getDescricao();
+        preco = p.getPreco() != null ? p.getPreco() : 0.0;
+        imgUrl = p.getImgUrl();
     }
 
     public Long getId() {

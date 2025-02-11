@@ -34,6 +34,9 @@ public class ProdutoController {
 
     @PostMapping
     public ResponseEntity<ProdutoDTO> criar(@RequestBody ProdutoDTO produtoDTO) {
+        if (produtoDTO.getPreco() == null) {
+            produtoDTO.setPreco(0.0);
+        }
         ProdutoDTO novoProduto = service.criar(produtoDTO);
         return ResponseEntity.ok(novoProduto);
     }
