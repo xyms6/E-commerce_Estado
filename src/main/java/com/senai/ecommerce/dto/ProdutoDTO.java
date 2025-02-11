@@ -7,13 +7,13 @@ public class ProdutoDTO {
     private Long id;
     private String nome;
     private String descricao;
-    private double preco;
+    private Double preco;  
     private String imgUrl;
 
     public ProdutoDTO() {
     }
 
-    public ProdutoDTO(Long id, String nome, String descricao, double preco, String imgUrl) {
+    public ProdutoDTO(Long id, String nome, String descricao, Double preco, String imgUrl) {
         this.id = id;
         this.nome = nome;
         this.descricao = descricao;
@@ -25,7 +25,7 @@ public class ProdutoDTO {
         this.id = p.getId();
         this.nome = p.getNome();
         this.descricao = p.getDescricao();
-        this.preco = (p.getPreco() != null) ? p.getPreco() : 0.0; 
+        this.preco = p.getPreco();  
         this.imgUrl = p.getImgUrl();
     }
 
@@ -53,11 +53,11 @@ public class ProdutoDTO {
         this.descricao = descricao;
     }
 
-    public double getPreco() {
+    public Double getPreco() {
         return preco;
     }
 
-    public void setPreco(double preco) {
+    public void setPreco(Double preco) {
         this.preco = preco;
     }
 

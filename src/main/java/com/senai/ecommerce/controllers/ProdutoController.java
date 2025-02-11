@@ -37,5 +37,4 @@ public class ProdutoController {
         ProdutoDTO novoProduto = service.criar(produtoDTO);
         return ResponseEntity.ok(novoProduto);
     }
-
 }
