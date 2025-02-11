@@ -4,6 +4,8 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import com.senai.ecommerce.dto.ProdutoDTO;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -36,7 +38,7 @@ public class Produto {
 	@OneToMany(mappedBy = "id.produto")
 	private Set<ItemDoPedido> items = new HashSet<>();
 
-	public Produto() {
+	public Produto(ProdutoDTO produtoDTO) {
 
 	}
 
@@ -47,6 +49,7 @@ public class Produto {
 		this.preco = preco;
 		this.imgUrl = imgUrl;
 	}
+
 
 	public Long getId() {
 		return id;

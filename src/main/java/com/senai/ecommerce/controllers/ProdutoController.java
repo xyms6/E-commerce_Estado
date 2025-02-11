@@ -7,6 +7,8 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -28,5 +30,10 @@ public class ProdutoController {
 	@GetMapping(value = "pagina")
 	public ResponseEntity<Page<ProdutoDTO>> buscarPagina(Pageable pagina){
 		return ResponseEntity.ok(service.buscarPagina(pagina));
+	}
+	@PostMapping
+	public ResponseEntity<ProdutoDTO> criar(@RequestBody ProdutoDTO produtoDTO){
+		ProdutoDTO novoProduto = service.criar(produtoDTO); // Chama o serviço para salvar o novo produto
+		return ResponseEntity.status(201).body(novoProduto); // Retorna o produto criado com status 201 (Created)
 	}
 }
