@@ -1,9 +1,11 @@
 package com.senai.ecommerce.entities;
 
+import java.util.Collection;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import com.senai.ecommerce.dto.CategoriaDTO;
 import com.senai.ecommerce.dto.ProdutoDTO;
 
 import jakarta.persistence.Column;
@@ -46,7 +48,7 @@ public class Produto {
         this.imgUrl = produtoDTO.getImgUrl();
     }
 
-    public Produto(Long id, String nome, String descricao, Double preco, String imgUrl) {
+    public Produto() {
         this.id = id;
         this.nome = nome;
         this.descricao = descricao;
@@ -101,4 +103,15 @@ public class Produto {
     public List<Pedido> getPedido() {
         return items.stream().map(x -> x.getPedido()).toList();
     }
+
+	public Set<Categoria> getCategorias() {
+		return categorias;
+	}
+
+	public void setCategorias(Set<Categoria> categorias) {
+		this.categorias = categorias;
+	}
+
+    
+	
 }
