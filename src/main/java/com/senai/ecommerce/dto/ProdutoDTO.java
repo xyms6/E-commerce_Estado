@@ -16,6 +16,25 @@ public class ProdutoDTO {
     
     private List<CategoriaDTO> categoria = new ArrayList<>();
 
+@Transactional
+public ProdutoDTO inserir(ProdutoDTO dto) {
+    Produto prod = new Produto();
+    prod.setNome(dto.getNome());
+    prod.setDescricao(dto.getDescricao());
+    prod.setPreco(dto.getPreco());
+    prod.setImgUrl(dto.getImgUrl());
+
+    if (dto.getCategoria() != null) { // Verifica se a lista de categorias não é nula
+        for (CategoriaDTO cat : dto.getCategoria()) {
+            Categoria entity = categoriaRepository.getReferenceById(cat.getId()); // Busca a categoria pelo ID
+            prod.getCategorias().add(entity); // Adiciona a categoria ao produto
+        }
+    }
+
+    prod = repo.save(prod); // Salva o produto no banco de dados
+    return new ProdutoDTO(prod); // Retorna o DTO do produto salvo
+}
+	
     public ProdutoDTO() {
     }
 
