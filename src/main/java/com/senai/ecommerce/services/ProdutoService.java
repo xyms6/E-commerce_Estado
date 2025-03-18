@@ -16,6 +16,8 @@ public class ProdutoService {
 
     @Autowired 
     private ProdutoRepository repo;
+    @Autowired 
+    private CategoriaRepository categoriaRepository;
     
     public List<ProdutoDTO> buscarTodos() {
         List<Produto> list = repo.findAll();
