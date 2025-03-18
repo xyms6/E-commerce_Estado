@@ -1,7 +1,7 @@
 package com.senai.ecommerce.dto;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import com.senai.ecommerce.entities.Produto;
 
@@ -12,29 +12,8 @@ public class ProdutoDTO {
     private String descricao;
     private Double preco;
     private String imgUrl;
-    
-    
-    private List<CategoriaDTO> categoria = new ArrayList<>();
+    private List<CategoriaDTO> categoria;
 
-@Transactional
-public ProdutoDTO inserir(ProdutoDTO dto) {
-    Produto prod = new Produto();
-    prod.setNome(dto.getNome());
-    prod.setDescricao(dto.getDescricao());
-    prod.setPreco(dto.getPreco());
-    prod.setImgUrl(dto.getImgUrl());
-
-    if (dto.getCategoria() != null) { // Verifica se a lista de categorias não é nula
-        for (CategoriaDTO cat : dto.getCategoria()) {
-            Categoria entity = categoriaRepository.getReferenceById(cat.getId()); // Busca a categoria pelo ID
-            prod.getCategorias().add(entity); // Adiciona a categoria ao produto
-        }
-    }
-
-    prod = repo.save(prod); // Salva o produto no banco de dados
-    return new ProdutoDTO(prod); // Retorna o DTO do produto salvo
-}
-	
     public ProdutoDTO() {
     }
 
@@ -46,13 +25,19 @@ public ProdutoDTO inserir(ProdutoDTO dto) {
         this.imgUrl = imgUrl;
     }
 
-    public ProdutoDTO(Produto p) {
-        id = p.getId();
-        nome = p.getNome();
-        descricao = p.getDescricao();
-        preco = p.getPreco() != null ? p.getPreco() : 0.0;
-        imgUrl = p.getImgUrl();
+    public ProdutoDTO(Produto produto) {
+        this.id = produto.getId();
+        this.nome = produto.getNome();
+        this.descricao = produto.getDescricao();
+        this.preco = produto.getPreco();
+        this.imgUrl = produto.getImgUrl();
+        this.categoria = produto.getCategorias().stream()
+                                .map(CategoriaDTO::new)
+                                .collect(Collectors.toList());
     }
+
+    // Getters e Setters
+
 
     public Long getId() {
         return id;
