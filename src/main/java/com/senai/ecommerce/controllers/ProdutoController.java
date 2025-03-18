@@ -22,7 +22,7 @@ public class ProdutoController {
     @Autowired 
     private ProdutoService service;
 
-    @GetMapping
+    @GetMapping(value = "/buscar")
     public ResponseEntity<List<ProdutoDTO>> buscar() {
         return ResponseEntity.ok(service.buscarTodos());
     }
@@ -32,12 +32,9 @@ public class ProdutoController {
         return ResponseEntity.ok(service.buscarPagina(pagina));
     }
 
-    @PostMapping
-    public ResponseEntity<ProdutoDTO> criar(@RequestBody ProdutoDTO produtoDTO) {
-        if (produtoDTO.getPreco() == null) {
-            produtoDTO.setPreco(0.0);
-        }
-        ProdutoDTO novoProduto = service.criar(produtoDTO);
-        return ResponseEntity.ok(novoProduto);
+    @PostMapping(value = "/criar")
+    public ResponseEntity<ProdutoDTO> inserir(@RequestBody ProdutoDTO dto) {
+        dto = service.inserir(dto);
+        return ResponseEntity.ok(dto);
     }
 }
