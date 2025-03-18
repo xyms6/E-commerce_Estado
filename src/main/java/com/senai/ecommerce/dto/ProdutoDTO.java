@@ -1,5 +1,8 @@
 package com.senai.ecommerce.dto;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import com.senai.ecommerce.entities.Produto;
 
 public class ProdutoDTO {
@@ -9,6 +12,9 @@ public class ProdutoDTO {
     private String descricao;
     private Double preco;
     private String imgUrl;
+    
+    
+    private List<CategoriaDTO> categoria = new ArrayList<>();
 
     public ProdutoDTO() {
     }
@@ -68,4 +74,14 @@ public class ProdutoDTO {
     public void setImgUrl(String imgUrl) {
         this.imgUrl = imgUrl;
     }
+
+	public List<CategoriaDTO> getCategoria() {
+		return categoria;
+	}
+
+	public void setCategoria(List<CategoriaDTO> categoria) {
+		this.categoria = categoria;
+	}
+    
+    
 }
