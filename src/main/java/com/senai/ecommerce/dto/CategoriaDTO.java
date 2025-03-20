@@ -16,8 +16,8 @@ public class CategoriaDTO {
     }
 
     public CategoriaDTO(Categoria entity) {
-        this.id = entity.getId();
-        this.nome = entity.getNome();
+        id = entity.getId();
+        nome = entity.getNome();
     }
 	public Long getId() {
 		return id;
