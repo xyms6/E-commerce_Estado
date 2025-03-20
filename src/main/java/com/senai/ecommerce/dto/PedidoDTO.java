@@ -31,7 +31,7 @@ public class PedidoDTO {
 		id = entity.getId();
 		momento = entity.getMomento();
 		status = entity.getStatus();
-		clienteId = (entity.getCliente() != null) ? entity.getCliente().getId() : null;
+		clienteId = (entity.getCliente() != null) ? entity.getCliente().getId() : null; // Se existe um cliente o get retorna um objeto, o código pega o ID desse cliente e o atribui a clienteId. Caso contrário, clienteId recebe null. 
 	}
 
 	public Long getId() {
