@@ -31,7 +31,7 @@ public class PedidoDTO {
 		id = entity.getId();
 		momento = entity.getMomento();
 		status = entity.getStatus();
-		clienteId = entity.getCliente().getId();
+		clienteId = (entity.getCliente() != null) ? entity.getCliente().getId() : null;
 	}
 
 	public Long getId() {
