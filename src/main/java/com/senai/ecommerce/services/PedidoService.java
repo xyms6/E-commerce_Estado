@@ -16,10 +16,9 @@ public class PedidoService {
 	@Autowired
 	UsuarioRepository usuarioRepository;
 
-	public PedidoDTO inserir(Pedido dto) {
+	public PedidoDTO inserir(PedidoDTO dto) {
 		Pedido pedido = new Pedido();
 		pedido.setMomento(dto.getMomento());
-		pedido.setCliente(dto.getCliente());
 		pedido.setId(dto.getId());
 		pedido.setStatus(dto.getStatus());
 		
