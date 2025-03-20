@@ -2,12 +2,13 @@ package com.senai.ecommerce.entities;
 
 import jakarta.persistence.EmbeddedId;
 import jakarta.persistence.Entity;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "tb_pedido_item")
 public class ItemDoPedido {
-	
+
 	@EmbeddedId
 	private ItemDoPedidoPK id = new ItemDoPedidoPK();
 	

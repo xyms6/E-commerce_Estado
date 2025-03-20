@@ -1,10 +1,13 @@
 package com.senai.ecommerce.services;
 
+import java.time.Instant;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.senai.ecommerce.dto.PedidoDTO;
 import com.senai.ecommerce.entities.Pedido;
+import com.senai.ecommerce.entities.StatusDoPedido;
 import com.senai.ecommerce.entities.Usuario;
 import com.senai.ecommerce.repositories.PedidoRepository;
 import com.senai.ecommerce.repositories.UsuarioRepository;
@@ -20,8 +23,8 @@ public class PedidoService {
 
 	public PedidoDTO inserir(PedidoDTO dto) {
 		Pedido pedido = new Pedido();
-		pedido.setMomento(dto.getMomento());
-		pedido.setStatus(dto.getStatus());
+		pedido.setMomento(Instant.now());
+		pedido.setStatus(StatusDoPedido.AGUARDANDO_PAGAMENTO);
 
 		// Buscar o usuário pelo ID recebido
 		Usuario usuario = usuarioRepository.findById(dto.getClienteId()) // O código tenta encontrar um usuário pelo ID (dto.getClienteId()).Se não encontrar, lança um erro dizendo "Usuário não encontrado!".
