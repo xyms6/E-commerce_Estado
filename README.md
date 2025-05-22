@@ -32,11 +32,11 @@
   <div style="background-color: #f5f5f5; padding: 15px; border-radius: 8px; margin: 10px 0;">
     <h3 style="color: #2c3e50;">Usuários</h3>
     <pre style="color: #34495e;">
-POST /usuarios - Criar usuário
-GET /usuarios - Listar usuários
-GET /usuarios/{id} - Buscar usuário por ID
-PUT /usuarios/{id} - Atualizar usuário
-DELETE /usuarios/{id} - Deletar usuário</pre>
+POST /usuario - Criar usuário
+GET /usuario - Listar usuários
+GET /usuario/{id} - Buscar usuário por ID
+PUT /usuario/{id} - Atualizar usuário
+DELETE /usuario/{id} - Deletar usuário</pre>
   </div>
 
   <div style="background-color: #f5f5f5; padding: 15px; border-radius: 8px; margin: 10px 0;">
