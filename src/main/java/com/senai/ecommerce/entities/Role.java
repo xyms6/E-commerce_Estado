@@ -1,5 +1,6 @@
 package com.senai.ecommerce.entities;
 
+import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -8,6 +9,7 @@ import jakarta.persistence.Table;
 import org.springframework.security.core.GrantedAuthority;
 
 @SuppressWarnings("serial")
+@Entity
 @Table(name = "tb_role")
 // Implementa a interface GrantedAuthority que é necessária para o Spring Security
 public class Role implements GrantedAuthority {

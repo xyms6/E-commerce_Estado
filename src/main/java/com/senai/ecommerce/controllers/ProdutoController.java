@@ -25,7 +25,7 @@ public class ProdutoController {
     @Autowired 
     private ProdutoService service;
 
-    @GetMapping
+    @GetMapping (value = "/buscar")
     public ResponseEntity<List<ProdutoDTO>> findAll() {
         return ResponseEntity.ok(service.findAll());
     }
@@ -41,7 +41,7 @@ public class ProdutoController {
         return ResponseEntity.ok(service.findAll(pageable));
     }
 
-    @PostMapping
+    @PostMapping (value = "/criar")
     public ResponseEntity<ProdutoDTO> insert(@RequestBody ProdutoDTO dto) {
         dto = service.insert(dto);
         return ResponseEntity.ok(dto);
